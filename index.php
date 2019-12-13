@@ -1,5 +1,7 @@
 <?php
+
 $server_key = "SB-Mid-server-F6jwy4vNryaI6T06_EdY7BwI";
+
 $is_production = false;
 
 $api_url = $is_production ?
@@ -45,7 +47,8 @@ function chargeAPI($api_url, $server_key, $request_body){
 	curl_setopt_array($ch, $curl_options);
 	$result = array(
 		'body' => curl_exec($ch, CURLINFO_HTTP_CODE),
-		);
+		'http_code => curl_getinfo($ch, CURLINFO_HTTP_CODE)'
+	);
 	return $result;
 
 }
